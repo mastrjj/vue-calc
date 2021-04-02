@@ -1,0 +1,186 @@
+<!doctype html>
+<head>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+  <div id="wallpapers-calculator">
+    <div id="room-or-walls">
+      <input type="radio" id="one" value="One" v-model="picked" />
+      <label for="one">Размеры комнаты</label>
+      <br />
+      <input type="radio" id="two" value="Two" v-model="picked" />
+      <label for="two">Размеры стен</label>
+      <br />
+    </div>
+    <div v-if="picked === 'One'">
+      <h2>Размеры комнаты:</h2>
+      <input type="number" v-model.number="room_l" id="room_length" />
+      <label for="room_length">Длина комнаты (м)</label>
+      <br />
+
+      <input type="number" v-model.number="room_w" id="room_widht" />
+      <label for="room_widht">Ширина комнаты (м)</label>
+      <br />
+
+      <input type="number" v-model.number="room_h" id="room_high"/>
+      <label for="room_high">Высота комнаты (м)</label>
+    </div>
+    <br />
+    <div v-if="picked === 'Two'">
+      <h2>Размеры стен:</h2>
+      <input type="number" v-model.number="wall1_l" />
+      <label>Длина стены (м)</label>
+      <input type="number" v-model.number="wall1_w" />
+      <label>Ширина стены (м)</label>
+      <br />
+      <div v-if="numOfWalls >= 2" id="wa2">
+        <input type="number" v-model.number="wall2_l" />
+        <label>Длина стены (м)</label>
+        <input type="number" v-model.number="wall2_w" />
+        <label>Ширина стены (м)</label>
+      </div>
+
+      <div v-if="numOfWalls >= 3" id="wa3">
+        <input type="number" v-model.number="wall3_l" />
+        <label>Длина стены (м)</label>
+        <input type="number" v-model.number="wall3_w" />
+        <label>Ширина стены (м)</label>
+      </div>
+
+      <div v-if="numOfWalls >= 4" id="wa4">
+        <input type="number" v-model.number="wall4_l" />
+        <label>Длина стены (м)</label>
+        <input type="number" v-model.number="wall4_w" />
+        <label>Ширина стены (м)</label>
+      </div>
+      <button @click="addWall">Добавить стену</button>
+    </div>
+    <div id="windows">
+      <h2>Размеры окон:</h2>
+      <button @click="addWindow">Добавить окно</button>
+      <div v-if="numOfWindows >= 1" id="w1">
+        <input type="number" v-model.number="w1_l" />
+        <input type="number" v-model.number="w1_w" />
+      </div>
+      <div v-if="numOfWindows >= 2" id="w2">
+        <input type="number" v-model.number="w2_l" />
+        <input type="number" v-model.number="w2_w" />
+      </div>
+      <div v-if="numOfWindows >= 3" id="w3">
+        <input type="number" v-model.number="w3_l" />
+        <input type="number" v-model.number="w3_w" />
+      </div>
+      <div v-if="numOfWindows >= 4" id="w4">
+        <input type="number" v-model.number="w4_l" />
+        <input type="number" v-model.number="w4_w" />
+      </div>
+      <div v-if="numOfWindows >= 5" id="w5">
+        <input type="number" v-model.number="w5_l" />
+        <input type="number" v-model.number="w5_w" />
+      </div>
+      <div v-if="numOfWindows >= 6" id="w6">
+        <input type="number" v-model.number="w6_l" />
+        <input type="number" v-model.number="w6_w" />
+      </div>
+    </div>
+    <div id="doors">
+      <h2>Размеры дверей:</h2>
+      <button @click="addDoor">Добавить дверь</button>
+      <div v-if="numOfDoors >= 1">
+        <input type="number" v-model.number="d1_l" />
+        <input type="number" v-model.number="d1_w" />
+      </div>
+      <div v-if="numOfDoors >= 2">
+        <input type="number" v-model.number="d2_l" />
+        <input type="number" v-model.number="d2_w" />
+      </div>
+    </div>
+    <br />
+    <div>
+      <h2>Размеры обоев:</h2>
+      <h3>Ширина рулона:</h3>
+      <input type="radio" id="w_53" value=53 v-model="wallpaper_widht" />
+      <label for="w_53">53 (см)</label>
+      <input type="radio" id="w_106" value=106 v-model="wallpaper_widht" />
+      <label for="w_53">106 (см)</label>
+      <br />
+      <h3>Длина рулона:</h3>
+      <input type="radio" id="wl_10" value=10 v-model="wallpaper_length" />
+      <label for="w_53">10 (м)</label>
+      <input type="radio" id="wl_25" value=25 v-model="wallpaper_length" />
+      <label for="w_53">25 (м)</label>
+      <br />
+      <span>Ширина рулона(см): {{ wallpaper_widht }}</span>
+      <br />
+      <span>Длина рулона(м): {{ wallpaper_length }}</span>
+    </div>
+    <button @click="calculate">Рассчитать площадь</button>
+    <br />
+    <span>Общая площадь всех стен: {{ area }} м2</span>
+    <br />
+    <span>Требуемое количество рулонов обоев: {{ numOfWallPacks }} шт.</span>
+    <br />
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        wallpaper_widht: 0,
+        wallpaper_length: 0,
+        picked: '',
+        area: 0,
+        numOfWindows: 0,
+        numOfDoors: 0,
+        room_l: 0,
+        room_w: 0,
+        room_h: 0,
+        numOfWalls: 1,
+        wall1_l: 0,
+        wall1_w: 0,
+        wall2_l: 0,
+        wall2_w: 0,
+        wall3_l: 0,
+        wall3_w: 0,
+        wall4_l: 0,
+        wall4_w: 0,
+        w1_l: 0,
+        w1_w: 0,
+        w2_l: 0,
+        w2_w: 0,
+        w3_l: 0,
+        w3_w: 0,
+        w4_l: 0,
+        w4_w: 0,
+        w5_l: 0,
+        w5_w: 0,
+        w6_l: 0,
+        w6_w: 0,
+        d1_l: 0,
+        d1_w: 0,
+        d2_l: 0,
+        d2_w: 0,
+        numOfWallPacks: 0
+      }
+    },
+    methods: {
+      calculate() {
+        this.area = 0
+        this.area = 2 * this.room_h * (this.room_l + this.room_w) - this.w1_l*this.w1_w - this.w2_l*this.w2_w - this.w3_l*this.w3_w - this.w4_l*this.w4_w - this.w5_l*this.w5_w - this.w6_l*this.w6_w - this.d1_l*this.d1_w - this.d2_l*this.d2_w + this.wall1_l*this.wall1_w + this.wall2_l*this.wall2_w + this.wall3_l*this.wall3_w + this.wall4_l*this.wall4_w
+        this.numOfWallPacks = 1 + Math.trunc(this.area / (this.wallpaper_widht / 100 * this.wallpaper_length))
+      },
+      addWall(){
+        if (this.numOfWalls<=4)
+          this.numOfWalls++
+      },
+      addWindow() {
+        if (this.numOfWindows<=6)
+          this.numOfWindows++
+      },
+      addDoor() {
+        if (this.numOfDoors<=2)
+          this.numOfDoors++
+      }
+    }
+  }).mount('#wallpapers-calculator')
+</script>
+</body>
