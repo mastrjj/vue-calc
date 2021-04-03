@@ -5,6 +5,9 @@
 </head>
 <body>
   <div id="wallpapers-calculator">
+    <div>
+      Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):
+    </div>
     <div id="room-or-walls">
       <input type="radio" id="one" value="One" v-model="picked" />
       <label for="one">Размеры комнаты</label>
@@ -32,27 +35,27 @@
       <input type="number" v-model.number="wall1_l" />
       <label>Длина стены (м)</label>
       <input type="number" v-model.number="wall1_w" />
-      <label>Ширина стены (м)</label>
+      <label>Высота стены (м)</label>
       <br />
       <div v-if="numOfWalls >= 2" id="wa2">
         <input type="number" v-model.number="wall2_l" />
         <label>Длина стены (м)</label>
         <input type="number" v-model.number="wall2_w" />
-        <label>Ширина стены (м)</label>
+        <label>Высота стены (м)</label>
       </div>
 
       <div v-if="numOfWalls >= 3" id="wa3">
         <input type="number" v-model.number="wall3_l" />
         <label>Длина стены (м)</label>
         <input type="number" v-model.number="wall3_w" />
-        <label>Ширина стены (м)</label>
+        <label>Высота стены (м)</label>
       </div>
 
       <div v-if="numOfWalls >= 4" id="wa4">
         <input type="number" v-model.number="wall4_l" />
         <label>Длина стены (м)</label>
         <input type="number" v-model.number="wall4_w" />
-        <label>Ширина стены (м)</label>
+        <label>Высота стены (м)</label>
       </div>
       <button @click="addWall">Добавить стену</button>
     </div>
@@ -63,37 +66,37 @@
         <input type="number" v-model.number="w1_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w1_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 2" id="w2">
         <input type="number" v-model.number="w2_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w2_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 3" id="w3">
         <input type="number" v-model.number="w3_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w3_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 4" id="w4">
         <input type="number" v-model.number="w4_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w4_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 5" id="w5">
         <input type="number" v-model.number="w5_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w5_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 6" id="w6">
         <input type="number" v-model.number="w6_l" />
         <label>Длина окна (м)</label>
         <input type="number" v-model.number="w6_w" />
-        <label>Ширина окна (м)</label>
+        <label>Высота окна (м)</label>
       </div>
     </div>
     <div id="doors">
@@ -103,26 +106,26 @@
         <input type="number" v-model.number="d1_l" />
         <label>Длина двери (м)</label>
         <input type="number" v-model.number="d1_w" />
-        <label>Ширина двери (м)</label>
+        <label>Высота двери (м)</label>
       </div>
       <div v-if="numOfDoors >= 2">
         <input type="number" v-model.number="d2_l" />
         <label>Длина двери (м)</label>
         <input type="number" v-model.number="d2_w" />
-        <label>Ширина двери (м)</label>
+        <label>Высота двери (м)</label>
       </div>
     </div>
     <br />
     <div>
       <h2>Размеры обоев:</h2>
       <h3>Ширина рулона:</h3>
-      <input type="radio" id="w_53" value=53 v-model="wallpaper_widht" />
+      <input type="radio" id="w_53" value=53 v-model="wallpaper_widht" checked />
       <label for="w_53">53 (см)</label>
       <input type="radio" id="w_106" value=106 v-model="wallpaper_widht" />
       <label for="w_53">106 (см)</label>
       <br />
       <h3>Длина рулона:</h3>
-      <input type="radio" id="wl_10" value=10 v-model="wallpaper_length" />
+      <input type="radio" id="wl_10" value=10 v-model="wallpaper_length" checked />
       <label for="w_53">10 (м)</label>
       <input type="radio" id="wl_25" value=25 v-model="wallpaper_length" />
       <label for="w_53">25 (м)</label>
