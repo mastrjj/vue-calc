@@ -61,27 +61,39 @@
       <button @click="addWindow">Добавить окно</button>
       <div v-if="numOfWindows >= 1" id="w1">
         <input type="number" v-model.number="w1_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w1_w" />
+        <label>Ширина окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 2" id="w2">
         <input type="number" v-model.number="w2_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w2_w" />
+        <label>Ширина окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 3" id="w3">
         <input type="number" v-model.number="w3_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w3_w" />
+        <label>Ширина окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 4" id="w4">
         <input type="number" v-model.number="w4_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w4_w" />
+        <label>Ширина окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 5" id="w5">
         <input type="number" v-model.number="w5_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w5_w" />
+        <label>Ширина окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 6" id="w6">
         <input type="number" v-model.number="w6_l" />
+        <label>Длина окна (м)</label>
         <input type="number" v-model.number="w6_w" />
+        <label>Ширина окна (м)</label>
       </div>
     </div>
     <div id="doors">
@@ -89,11 +101,15 @@
       <button @click="addDoor">Добавить дверь</button>
       <div v-if="numOfDoors >= 1">
         <input type="number" v-model.number="d1_l" />
+        <label>Длина двери (м)</label>
         <input type="number" v-model.number="d1_w" />
+        <label>Ширина двери (м)</label>
       </div>
       <div v-if="numOfDoors >= 2">
         <input type="number" v-model.number="d2_l" />
+        <label>Длина двери (м)</label>
         <input type="number" v-model.number="d2_w" />
+        <label>Ширина двери (м)</label>
       </div>
     </div>
     <br />
