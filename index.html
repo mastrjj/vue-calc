@@ -18,43 +18,43 @@
     </div>
     <div v-if="picked === 'One'">
       <h2>Размеры комнаты:</h2>
-      <input type="number" v-model.number="room_l" id="room_length" />
+      <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1"/>
       <label for="room_length">Длина комнаты (м)</label>
       <br />
 
-      <input type="number" v-model.number="room_w" id="room_widht" />
+      <input type="number" v-model.number="room_w" id="room_widht" min="0" step="0.1"/>
       <label for="room_widht">Ширина комнаты (м)</label>
       <br />
 
-      <input type="number" v-model.number="room_h" id="room_high"/>
+      <input type="number" v-model.number="room_h" id="room_high" min="0" step="0.1"/>
       <label for="room_high">Высота комнаты (м)</label>
     </div>
     <br />
     <div v-if="picked === 'Two'">
       <h2>Размеры стен:</h2>
-      <input type="number" v-model.number="wall1_l" />
+      <input type="number" v-model.number="wall1_l" min="0" step="0.1"/>
       <label>Длина стены (м)</label>
-      <input type="number" v-model.number="wall1_w" />
+      <input type="number" v-model.number="wall1_w" min="0" step="0.1"/>
       <label>Высота стены (м)</label>
       <br />
       <div v-if="numOfWalls >= 2" id="wa2">
-        <input type="number" v-model.number="wall2_l" />
+        <input type="number" v-model.number="wall2_l" min="0" step="0.1"/>
         <label>Длина стены (м)</label>
-        <input type="number" v-model.number="wall2_w" />
+        <input type="number" v-model.number="wall2_w" min="0" step="0.1"/>
         <label>Высота стены (м)</label>
       </div>
 
       <div v-if="numOfWalls >= 3" id="wa3">
-        <input type="number" v-model.number="wall3_l" />
+        <input type="number" v-model.number="wall3_l" min="0" step="0.1"/>
         <label>Длина стены (м)</label>
-        <input type="number" v-model.number="wall3_w" />
+        <input type="number" v-model.number="wall3_w" min="0" step="0.1"/>
         <label>Высота стены (м)</label>
       </div>
 
       <div v-if="numOfWalls >= 4" id="wa4">
-        <input type="number" v-model.number="wall4_l" />
+        <input type="number" v-model.number="wall4_l" min="0" step="0.1"/>
         <label>Длина стены (м)</label>
-        <input type="number" v-model.number="wall4_w" />
+        <input type="number" v-model.number="wall4_w" min="0" step="0.1"/>
         <label>Высота стены (м)</label>
       </div>
       <button @click="addWall">Добавить стену</button>
@@ -63,39 +63,39 @@
       <h2>Размеры окон:</h2>
       <button @click="addWindow">Добавить окно</button>
       <div v-if="numOfWindows >= 1" id="w1">
-        <input type="number" v-model.number="w1_l" />
+        <input type="number" v-model.number="w1_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w1_w" />
+        <input type="number" v-model.number="w1_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 2" id="w2">
-        <input type="number" v-model.number="w2_l" />
+        <input type="number" v-model.number="w2_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w2_w" />
+        <input type="number" v-model.number="w2_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 3" id="w3">
-        <input type="number" v-model.number="w3_l" />
+        <input type="number" v-model.number="w3_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w3_w" />
+        <input type="number" v-model.number="w3_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 4" id="w4">
-        <input type="number" v-model.number="w4_l" />
+        <input type="number" v-model.number="w4_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w4_w" />
+        <input type="number" v-model.number="w4_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 5" id="w5">
-        <input type="number" v-model.number="w5_l" />
+        <input type="number" v-model.number="w5_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w5_w" />
+        <input type="number" v-model.number="w5_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
       <div v-if="numOfWindows >= 6" id="w6">
-        <input type="number" v-model.number="w6_l" />
+        <input type="number" v-model.number="w6_l" min="0" step="0.1"/>
         <label>Длина окна (м)</label>
-        <input type="number" v-model.number="w6_w" />
+        <input type="number" v-model.number="w6_w" min="0" step="0.1"/>
         <label>Высота окна (м)</label>
       </div>
     </div>
@@ -103,15 +103,15 @@
       <h2>Размеры дверей:</h2>
       <button @click="addDoor">Добавить дверь</button>
       <div v-if="numOfDoors >= 1">
-        <input type="number" v-model.number="d1_l" />
+        <input type="number" v-model.number="d1_l" min="0" step="0.1"/>
         <label>Длина двери (м)</label>
-        <input type="number" v-model.number="d1_w" />
+        <input type="number" v-model.number="d1_w" min="0" step="0.1"/>
         <label>Высота двери (м)</label>
       </div>
       <div v-if="numOfDoors >= 2">
-        <input type="number" v-model.number="d2_l" />
+        <input type="number" v-model.number="d2_l" min="0" step="0.1"/>
         <label>Длина двери (м)</label>
-        <input type="number" v-model.number="d2_w" />
+        <input type="number" v-model.number="d2_w" min="0" step="0.1"/>
         <label>Высота двери (м)</label>
       </div>
     </div>
@@ -144,8 +144,8 @@
   Vue.createApp({
     data() {
       return {
-        wallpaper_widht: 0,
-        wallpaper_length: 0,
+        wallpaper_widht: 53,
+        wallpaper_length: 10,
         picked: '',
         area: 0,
         numOfWindows: 0,
