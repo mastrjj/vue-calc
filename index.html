@@ -9,7 +9,7 @@
       Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):
     </div>
     <div id="room-or-walls">
-      <input type="radio" id="one" value="One" v-model="picked" />
+      <input type="radio" id="one" value="One" v-model="picked" checked/>
       <label for="one">Размеры комнаты</label>
       <br />
       <input type="radio" id="two" value="Two" v-model="picked" />
@@ -146,7 +146,7 @@
       return {
         wallpaper_widht: 53,
         wallpaper_length: 10,
-        picked: '',
+        picked: 'One',
         area: 0,
         numOfWindows: 0,
         numOfDoors: 0,
