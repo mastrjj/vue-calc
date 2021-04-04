@@ -9,14 +9,14 @@
       Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):
     </div>
     <div id="room-or-walls">
-      <input type="radio" id="one" value="One" v-model="picked" checked/>
+      <input type="radio" id="one" value="RoomSizes" v-model="picked" checked/>
       <label for="one">Размеры комнаты</label>
       <br />
-      <input type="radio" id="two" value="Two" v-model="picked" />
+      <input type="radio" id="two" value="WallSizes" v-model="picked" />
       <label for="two">Размеры стен</label>
       <br />
     </div>
-    <div v-if="picked === 'One'">
+    <div v-if="picked === 'RoomSizes'">
       <h2>Размеры комнаты:</h2>
       <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1"/>
       <label for="room_length">Длина комнаты (м)</label>
@@ -30,7 +30,7 @@
       <label for="room_high">Высота комнаты (м)</label>
     </div>
     <br />
-    <div v-if="picked === 'Two'">
+    <div v-if="picked === 'WallSizes'">
       <h2>Размеры стен:</h2>
       <input type="number" v-model.number="wall1_l" min="0" step="0.1"/>
       <label>Длина стены (м)</label>
@@ -119,16 +119,16 @@
     <div>
       <h2>Размеры обоев:</h2>
       <h3>Ширина рулона:</h3>
-      <input type="radio" id="w_53" value=53 v-model="wallpaper_widht" checked />
+      <input type="radio" id="w_53" value=0.53 v-model="wallpaper_widht" checked />
       <label for="w_53">53 (см)</label>
-      <input type="radio" id="w_106" value=106 v-model="wallpaper_widht" />
-      <label for="w_53">106 (см)</label>
+      <input type="radio" id="w_106" value=1.06 v-model="wallpaper_widht" />
+      <label for="w_106">106 (см)</label>
       <br />
       <h3>Длина рулона:</h3>
       <input type="radio" id="wl_10" value=10 v-model="wallpaper_length" checked />
-      <label for="w_53">10 (м)</label>
+      <label for="wl_10">10 (м)</label>
       <input type="radio" id="wl_25" value=25 v-model="wallpaper_length" />
-      <label for="w_53">25 (м)</label>
+      <label for="wl_25">25 (м)</label>
       <br />
       <h3>Повтор рисунка (раппорт):</h3>
       <input type="number" id="wl_10" v-model.number="wall_picture" min="0" step="0.1" />
@@ -139,19 +139,23 @@
     </div>
     <button @click="calculate">Рассчитать площадь</button>
     <br />
-    <span>Общая площадь всех стен: {{ area }} м<sup>2</sup></span>
+    <span>Периметр помещения: {{ perimeter }} м</span>
     <br />
-    <span>Требуемое количество рулонов обоев: {{ numOfWallPacks }} шт.</span>
+    <span>Требуемое Количество полос на периметр помещенения: {{ parameter_K }} шт.</span>
+    <br />
+    <span>Требуемое Количество полос из одного рулона: {{ parameter_C }} шт.</span>
+    <br />
+    <span>Требуемое Количество рулонов: {{ numOfWallPacks }} шт.</span>
     <br />
 <script>
   Vue.createApp({
     data() {
       return {
-        wallpaper_widht: 53,
+        wallpaper_widht: 0.53,
         wallpaper_length: 10,
         wall_picture: 0,
-        picked: 'One',
-        area: 0,
+        picked: 'RoomSizes',
+        perimeter: 0,
         numOfWindows: 0,
         numOfDoors: 0,
         room_l: 4,
@@ -182,14 +186,21 @@
         d1_w: 0,
         d2_l: 0,
         d2_w: 0,
-        numOfWallPacks: 0
+        numOfWallPacks: 0,
+        parameter_K: 0,
+        parameter_C: 0
       }
     },
     methods: {
       calculate() {
-        this.area = 0
-        this.area = 2 * this.room_h * (this.room_l + this.room_w) - this.w1_l*this.w1_w - this.w2_l*this.w2_w - this.w3_l*this.w3_w - this.w4_l*this.w4_w - this.w5_l*this.w5_w - this.w6_l*this.w6_w - this.d1_l*this.d1_w - this.d2_l*this.d2_w + this.wall1_l*this.wall1_w + this.wall2_l*this.wall2_w + this.wall3_l*this.wall3_w + this.wall4_l*this.wall4_w
-        this.numOfWallPacks = 1 + Math.trunc(this.area / (this.wallpaper_widht / 100 * this.wallpaper_length))
+        if (this.picked === 'RoomSizes') {
+          this.perimeter = 2 * this.room_l + 2 * this.room_w
+          this.parameter_K = 1 + Math.trunc(this.perimeter / this.wallpaper_widht)
+          if (this.wall_picture === 0) {
+            this.parameter_C = 1 + Math.trunc(this.wallpaper_length / this.room_h)
+            this.numOfWallPacks = 1 + Math.trunc(this.parameter_K / this.parameter_C)
+          }
+        }
       },
       addWall(){
         if (this.numOfWalls<=4)
