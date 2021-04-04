@@ -141,11 +141,11 @@
     <br />
     <span>Периметр помещения: {{ perimeter }} м</span>
     <br />
-    <span>Требуемое Количество полос на периметр помещенения: {{ parameter_K }} шт.</span>
+    <span>Требуемое Количество полос на периметр помещенения: {{ param_K }} шт.</span>
     <br />
-    <span>Требуемое Количество полос из одного рулона: {{ parameter_C }} шт.</span>
+    <span>Требуемое Количество полос из одного рулона: {{ param_C }} шт.</span>
     <br />
-    <span>Требуемое Количество рулонов: {{ numOfWallPacks }} шт.</span>
+    <span>Требуемое Количество рулонов: {{ param_X }} шт.</span>
     <br />
 <script>
   Vue.createApp({
@@ -186,19 +186,19 @@
         d1_w: 0,
         d2_l: 0,
         d2_w: 0,
-        numOfWallPacks: 0,
-        parameter_K: 0,
-        parameter_C: 0
+        param_X: 0,   // Количество рулонов
+        param_K: 0,   // Количество полос на периметр помещенения
+        param_C: 0    // Количество полос из одного рулона
       }
     },
     methods: {
       calculate() {
         if (this.picked === 'RoomSizes') {
           this.perimeter = 2 * this.room_l + 2 * this.room_w
-          this.parameter_K = 1 + Math.trunc(this.perimeter / this.wallpaper_widht)
+          this.param_K = 1 + Math.trunc(this.perimeter / this.wallpaper_widht)
           if (this.wall_picture === 0) {
-            this.parameter_C = 1 + Math.trunc(this.wallpaper_length / this.room_h)
-            this.numOfWallPacks = 1 + Math.trunc(this.parameter_K / this.parameter_C)
+            this.param_C = 1 + Math.trunc(this.wallpaper_length / this.room_h)
+            this.param_X = 1 + Math.trunc(this.param_K / this.param_C)
           }
         }
       },
