@@ -237,7 +237,7 @@
     </div>
     <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать</button>
     <div class="text-center">
-      <h5>Рабочая площадь поклейки:<span class="badge badge-light"> {{ param_a }} м<sup>2</sup></span></h5>
+      <h5>Рабочая площадь поклейки:<span class="badge badge-light"> {{ param_a.toFixed(2) }} м<sup>2</sup></span></h5>
       <h5>Требуемое количество рулонов: <span class="badge badge-dark">{{ param_X }} шт.</span></h5>
     </div>
 <script>
@@ -288,8 +288,10 @@
       calculate() {
         if (this.picked === 'RoomSizes')
           this.perimeter = 2 * this.room_l + 2 * this.room_w
-        else
+        else {
           this.perimeter = this.wall1_w + this.wall2_w + this.wall3_w + this.wall4_w
+          this.room_h = this.wall_h
+        }
         if (this.rapport > 0)
           this.param_h = this.room_h + this.rapport
         else (this.rapport > 0)
