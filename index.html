@@ -286,9 +286,9 @@
     },
     methods: {
       calculate() {
-        if (this.picked === 'RoomSizes')
-          this.perimeter = 2 * this.room_l + 2 * this.room_w
-        else {
+        if (this.picked === 'RoomSizes') {
+          this.perimeter = 2 * (this.room_l + this.room_w)
+        } else {
           this.perimeter = this.wall1_w + this.wall2_w + this.wall3_w + this.wall4_w
           this.room_h = this.wall_h
         }
