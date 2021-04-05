@@ -8,30 +8,26 @@
   <div id="rolls-calculator" class="container center-block">
     <div class="text-center">
       <h5>Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):</h5>
-      <div id="room-or-walls" class="row">
-        <div class="col">
-          <input type="radio" id="one" value="RoomSizes" v-model="picked" checked/>
-          <label class="form-text text-muted">Размеры комнаты</label>
-        </div>
-        <div class="col">
-          <input type="radio" id="two" value="WallSizes" v-model="picked" />
-          <label class="form-text text-muted">Размеры стен</label>
-        </div>
-      </div>
+      <form>
+        <label>Размеры комнаты</label>
+        <input type="radio" id="one" value="RoomSizes" v-model="picked" checked/>
+        <label>Размеры стен</label>
+        <input type="radio" id="two" value="WallSizes" v-model="picked" />
+      </form>
     </div>
     <div v-if="picked === 'RoomSizes'">
       <h5>Размеры комнаты:</h5>
       <div class="row">
         <div class="col">
-          <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1" class="form-control"/>
+          <input type="number" v-model.number="room_l" min="0" step="0.1" class="form-control"/>
           <small class="form-text text-muted">Длина (м)</small>
         </div>
         <div class="col">
-          <input type="number" v-model.number="room_w" id="room_widht" min="0" step="0.1" class="form-control"/>
+          <input type="number" v-model.number="room_w" min="0" step="0.1" class="form-control"/>
           <small class="form-text text-muted">Ширина (м)</small>
         </div>
         <div class="col">
-          <input type="number" v-model.number="room_h" id="room_high" min="0" step="0.1" class="form-control"/>
+          <input type="number" v-model.number="room_h" min="0" step="0.1" class="form-control"/>
           <small class="form-text text-muted">Высота (м)</small>
         </div>
       </div>
@@ -80,10 +76,10 @@
           </button></div>
         </div>
       </div>
-      <button @click="addWall" class="btn btn-outline-primary mb-2 btn-block">Добавить стену</button>
+      <button @click="addWall" class="btn btn-outline-primary mb-2">Добавить стену</button>
     </div>
     <div id="windows">
-      <button @click="addWindow" class="btn btn-outline-primary mb-2 btn-block">Добавить окно</button>
+      <button @click="addWindow" class="btn btn-outline-primary mb-2">Добавить окно</button>
       <div v-if="numOfWindows >= 1" id="w1">
         <div class="row">
           <div class="col">Окно 1</div>
@@ -186,7 +182,7 @@
       </div>
     </div>
     <div id="doors">
-      <button @click="addDoor" class="btn btn-outline-primary mb-2 btn-block">Добавить дверь</button>
+      <button @click="addDoor" class="btn btn-outline-primary mb-2">Добавить дверь</button>
       <div v-if="numOfDoors >= 1">
         <div class="row">
           <div class="col">Дверь 1</div>
@@ -217,8 +213,8 @@
       </div>
     </div>
     <div>
-      <h5>Ширина рулона:</h5>
       <div class="row">
+        <div class="col"><h5>Ширина рулона:</h5></div>
         <div class="col">
           <input type="radio" id="w_53" value=0.53 v-model="roll_widht" checked />
           <small class="form-text text-muted">53 (см)</small>
@@ -228,8 +224,8 @@
           <small class="form-text text-muted">106 (см)</small>
         </div>
       </div>
-      <h5>Длина рулона:</h5>
       <div class="row">
+        <div class="col"><h5>Длина рулона:</h5></div>
         <div class="col">
           <input type="radio" id="wl_10" value=10 v-model="roll_length" checked />
           <small class="form-text text-muted">10 (м)</small>
@@ -239,14 +235,17 @@
           <small class="form-text text-muted">25 (м)</small>
         </div>
       </div>
-      <h5>Высота рисунка (раппорт):</h5>
-      <input type="number" id="wl_10" v-model.number="rapport" min="0" step="0.1" class="form-control"/>
+      <form class="form-inline">
+        <label>Высота рисунка (см):</label>
+        <input type="number" id="wl_10" v-model.number="rapport" min="0" step="0.1" class="form-control"/>
+      </form>
       <br />
     </div>
     <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать</button>
     <div class="text-center">
       <h5>Рабочая площадь поклейки:<span class="badge badge-light"> {{ param_a.toFixed(2) }} м<sup>2</sup></span></h5>
       <h5>Требуемое количество рулонов: <span class="badge badge-dark">{{ param_X }} шт.</span></h5>
+      <h5>Количество остатков <span class="badge badge-dark">{{ param_O }} м в количестве {{param_X}} шт. </span></h5>
     </div>
 <script>
   Vue.createApp({
@@ -284,12 +283,15 @@
         d1_w: 0,
         d2_h: 0,
         d2_w: 0,
+        param_C: 0,   // Количество полос на периметр
+        param_K: 0,   // Количество полос с рулона
         param_sw: 0,  // Площадь окон
         param_sd: 0,  // Площадь дверных проемов
         param_s: 0,   // Площадь одного рулона
         param_a: 0,   // Площадь рабочей поверхности
         param_h: 0,   // Высота рабочей поверхности
-        param_X: 0    // Количество рулонов
+        param_X: 0,   // Количество рулонов
+        param_О: 0
       }
     },
     methods: {
@@ -302,9 +304,12 @@
         }
         if (this.rapport > 0)
           this.param_h = this.room_h + this.rapport
-        else (this.rapport > 0)
+        else
           this.param_h = this.room_h + 0.05
 
+        this.param_C = Math.ceil(this.perimeter / this.roll_widht)
+        // this.param_K = Math.ceil(this.roll_length / this.param_h)
+        // this.param_X = Math.ceil(this.param_C/this.param_K)
 
         // Расчет площадей окон и дверных проемов
         this.param_sw = this.w1_h * this.w1_w + this.w2_h * this.w2_w + this.w2_h * this.w3_w + this.w4_h * this.w3_w + this.w4_h * this.w4_w + this.w5_h * this.w5_w + this.w6_h * this.w6_w
@@ -317,6 +322,8 @@
         // Расчет кол-ва рулонов
         this.param_X = Math.ceil(this.param_a / this.param_s) + 1
 
+        // Расчет остатка
+        this.param_O = this.roll_length % this.param_h
       },
       addWall(){
         if (this.numOfWalls<=4)
