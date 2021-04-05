@@ -18,7 +18,7 @@
       <br />
     </div>
     <div v-if="picked === 'RoomSizes'">
-      <h2>Размеры комнаты:</h2>
+      <h4>Размеры комнаты:</h4>
       <div class="row">
         <div class="col">
           <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1" class="form-control"/>
@@ -33,7 +33,7 @@
     </div>
     <br />
     <div v-if="picked === 'WallSizes'">
-      <h2>Размеры стен:</h2>
+      <h4>Размеры стен:</h4>
       <div class="row">
         <div class="col">
           <input type="number" v-model.number="wall1_w" min="0" step="0.1" class="form-control"/>
@@ -193,7 +193,7 @@
     </div>
     <br />
     <div>
-      <h3>Ширина рулона:</h3>
+      <h4>Ширина рулона:</h4>
       <div class="row">
         <div class="col">
           <input type="radio" id="w_53" value=0.53 v-model="roll_widht" checked />
@@ -202,7 +202,7 @@
           <input type="radio" id="w_106" value=1.06 v-model="roll_widht" />
           <label for="w_106">106 (см)</label></div>
       </div>
-      <h3>Ширина рулона:</h3>
+      <h4>Ширина рулона:</h4>
       <div class="row">
         <div class="col">
           <input type="radio" id="wl_10" value=10 v-model="roll_length" checked />
@@ -211,7 +211,7 @@
           <input type="radio" id="wl_25" value=25 v-model="roll_length" />
           <label for="wl_25">25 (м)</label></div>
       </div>
-      <h3>Высота раппорта:</h3>
+      <h4>Высота раппорта:</h4>
       <input type="number" id="wl_10" v-model.number="rapport" min="0" step="0.1" class="form-control"/>
       <br />
       <span>Ширина рулона: {{ roll_widht }} (м)</span>
