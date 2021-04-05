@@ -22,13 +22,16 @@
       <div class="row">
         <div class="col">
           <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1" class="form-control"/>
-          <label for="room_length">Длина (м)</label></div>
+          <small class="form-text text-muted">Длина (м)</small>
+        </div>
         <div class="col">
           <input type="number" v-model.number="room_w" id="room_widht" min="0" step="0.1" class="form-control"/>
-          <label for="room_widht">Ширина (м)</label></div>
+          <small class="form-text text-muted">Ширина (м)</small>
+        </div>
         <div class="col">
           <input type="number" v-model.number="room_h" id="room_high" min="0" step="0.1" class="form-control"/>
-          <label for="room_high">Высота (м)</label></div>
+          <small class="form-text text-muted">Высота (м)</small>
+        </div>
       </div>
     </div>
     <br />
@@ -36,18 +39,19 @@
       <h4>Размеры стен:</h4>
       <div class="row">
         <div class="col">
-          <input type="number" v-model.number="wall1_w" min="0" step="0.1" class="form-control"/>
-          <label>Высота стены (м)</label></div>
-        <div class="col">
           <input type="number" v-model.number="wall_h" min="0" step="0.1" class="form-control"/>
-          <label>Ширина стены (м)</label>
+          <small class="form-text text-muted">Ширина стены (м)</small>
+        </div>
+        <div class="col">
+          <input type="number" v-model.number="wall1_w" min="0" step="0.1" class="form-control"/>
+          <small class="form-text text-muted">Высота стены (м)</small>
         </div>
       </div>
-
       <div v-if="numOfWalls >= 2" id="wa2">
         <div class="row">
           <div class="col"><input type="number" v-model.number="wall2_w" min="0" step="0.1" class="form-control"/>
-          <label>Ширина стены (м)</label></div>
+            <small class="form-text text-muted">Ширина стены (м)</small>
+        </div>
           <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
             <span aria-hidden="true">×</span>
           </button></div>
@@ -57,7 +61,8 @@
       <div v-if="numOfWalls >= 3" id="wa3">
         <div class="row">
           <div class="col"><input type="number" v-model.number="wall3_w" min="0" step="0.1" class="form-control"/>
-          <label>Ширина стены (м)</label></div>
+            <small class="form-text text-muted">Ширина стены (м)</small>
+        </div>
           <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
             <span aria-hidden="true">×</span>
           </button></div>
@@ -67,7 +72,8 @@
       <div v-if="numOfWalls >= 4" id="wa4">
         <div class="row">
           <div class="col"><input type="number" v-model.number="wall4_w" min="0" step="0.1" class="form-control"/>
-          <label>Ширина стены (м)</label></div>
+            <small class="form-text text-muted">Ширина стены (м)</small>
+        </div>
           <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
             <span aria-hidden="true">×</span>
           </button></div>
@@ -81,10 +87,12 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w1_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small>
+          </div>
           <div class="col">
             <input type="number" v-model.number="w1_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small>
+          </div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -95,10 +103,12 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w2_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small>
+          </div>
           <div class="col">
             <input type="number" v-model.number="w2_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small>
+          </div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -109,10 +119,12 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w3_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small>
+          </div>
           <div class="col">
             <input type="number" v-model.number="w3_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small>
+          </div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -123,10 +135,12 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w4_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small>
+          </div>
           <div class="col">
             <input type="number" v-model.number="w4_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small>
+          </div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -137,10 +151,12 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w5_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small>
+          </div>
           <div class="col">
             <input type="number" v-model.number="w5_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small>
+          </div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -151,10 +167,10 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="w6_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small></div>
           <div class="col">
             <input type="number" v-model.number="w6_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small></div>
           <div class="col">
             <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
               <span aria-hidden="true">×</span>
@@ -168,10 +184,10 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="d1_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small></div>
           <div class="col">
             <input type="number" v-model.number="d1_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small></div>
           <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
             <span aria-hidden="true">×</span>
           </button></div>
@@ -181,10 +197,10 @@
         <div class="row">
           <div class="col">
             <input type="number" v-model.number="d2_l" min="0" step="0.1" class="form-control"/>
-            <label>Ширина (м)</label></div>
+            <small class="form-text text-muted">Ширина (м)</small></div>
           <div class="col">
             <input type="number" v-model.number="d2_w" min="0" step="0.1" class="form-control"/>
-            <label>Высота (м)</label></div>
+            <small class="form-text text-muted">Высота (м)</small></div>
           <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
             <span aria-hidden="true">×</span>
           </button></div>
@@ -222,9 +238,9 @@
     </div>
     <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать</button>
     <br />
-    <span>Рабочая площадь помещения: {{ param_a }} м<sup>2</sup></span>
+    <h4>Рабочая площадь поклейки:<span class="badge badge-light"> {{ param_a }} м<sup>2</sup></span></h4>
     <br />
-    <span>Требуемое Количество рулонов: {{ param_X }} шт.</span>
+    <h4>Требуемое количество рулонов: <span class="badge badge-dark">{{ param_X }} шт.</span></h4>
     <br />
 <script>
   Vue.createApp({
