@@ -7,15 +7,17 @@
 <body>
   <div id="rolls-calculator" class="container center-block">
     <div class="text-center">
-      Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):
-    </div>
-    <div id="room-or-walls">
-      <input type="radio" id="one" value="RoomSizes" v-model="picked" checked/>
-      <label for="one">Размеры комнаты</label>
-      <br />
-      <input type="radio" id="two" value="WallSizes" v-model="picked" />
-      <label for="two">Размеры стен</label>
-      <br />
+      <h5>Выберите, какие размеры для расчета Вам желаете указать – размеры комнаты, либо размеры стены (стен):</h5>
+      <div id="room-or-walls" class="row">
+        <div class="col">
+          <input type="radio" id="one" value="RoomSizes" v-model="picked" checked/>
+          <label class="form-text text-muted">Размеры комнаты</label>
+        </div>
+        <div class="col">
+          <input type="radio" id="two" value="WallSizes" v-model="picked" />
+          <label class="form-text text-muted">Размеры стен</label>
+        </div>
+      </div>
     </div>
     <div v-if="picked === 'RoomSizes'">
       <h5>Размеры комнаты:</h5>
@@ -34,7 +36,6 @@
         </div>
       </div>
     </div>
-    <br />
     <div v-if="picked === 'WallSizes'">
       <h5>Размеры стен:</h5>
       <div class="row">
@@ -207,7 +208,6 @@
         </div>
       </div>
     </div>
-    <br />
     <div>
       <h5>Ширина рулона:</h5>
       <div class="row">
