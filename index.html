@@ -19,126 +19,176 @@
     </div>
     <div v-if="picked === 'RoomSizes'">
       <h2>Размеры комнаты:</h2>
-      <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1" class="form-control"/>
-      <label for="room_length">Длина (м)</label>
-      <br />
-
-      <input type="number" v-model.number="room_w" id="room_widht" min="0" step="0.1" class="form-control"/>
-      <label for="room_widht">Ширина (м)</label>
-      <br />
-
-      <input type="number" v-model.number="room_h" id="room_high" min="0" step="0.1" class="form-control"/>
-      <label for="room_high">Высота (м)</label>
+      <div class="row">
+        <div class="col">
+          <input type="number" v-model.number="room_l" id="room_length" min="0" step="0.1" class="form-control"/>
+          <label for="room_length">Длина (м)</label></div>
+        <div class="col">
+          <input type="number" v-model.number="room_w" id="room_widht" min="0" step="0.1" class="form-control"/>
+          <label for="room_widht">Ширина (м)</label></div>
+        <div class="col">
+          <input type="number" v-model.number="room_h" id="room_high" min="0" step="0.1" class="form-control"/>
+          <label for="room_high">Высота (м)</label></div>
+      </div>
     </div>
     <br />
     <div v-if="picked === 'WallSizes'">
       <h2>Размеры стен:</h2>
-      <input type="number" v-model.number="wall_h" min="0" step="0.1" class="form-control"/>
-      <label>Ширина стены (м)</label>
-      <input type="number" v-model.number="wall1_w" min="0" step="0.1" class="form-control"/>
-      <label>Высота стен (м)</label>
-      <br />
+      <div class="row">
+        <div class="col">
+          <input type="number" v-model.number="wall1_w" min="0" step="0.1" class="form-control"/>
+          <label>Высота стены (м)</label></div>
+        <div class="col">
+          <input type="number" v-model.number="wall_h" min="0" step="0.1" class="form-control"/>
+          <label>Ширина стены (м)</label>
+        </div>
+      </div>
+
       <div v-if="numOfWalls >= 2" id="wa2">
-        <input type="number" v-model.number="wall2_w" min="0" step="0.1" class="form-control"/>
-        <label>Ширина стены (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col"><input type="number" v-model.number="wall2_w" min="0" step="0.1" class="form-control"/>
+          <label>Ширина стены (м)</label></div>
+          <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
+            <span aria-hidden="true">×</span>
+          </button></div>
+        </div>
       </div>
 
       <div v-if="numOfWalls >= 3" id="wa3">
-        <input type="number" v-model.number="wall3_w" min="0" step="0.1" class="form-control"/>
-        <label>Ширина стены (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col"><input type="number" v-model.number="wall3_w" min="0" step="0.1" class="form-control"/>
+          <label>Ширина стены (м)</label></div>
+          <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
+            <span aria-hidden="true">×</span>
+          </button></div>
+        </div>
       </div>
 
       <div v-if="numOfWalls >= 4" id="wa4">
-        <input type="number" v-model.number="wall4_w" min="0" step="0.1" class="form-control"/>
-        <label>Ширина стены (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col"><input type="number" v-model.number="wall4_w" min="0" step="0.1" class="form-control"/>
+          <label>Ширина стены (м)</label></div>
+          <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWall">
+            <span aria-hidden="true">×</span>
+          </button></div>
+        </div>
       </div>
       <button @click="addWall" class="btn btn-outline-primary mb-2 btn-block">Добавить стену</button>
     </div>
     <div id="windows">
       <button @click="addWindow" class="btn btn-outline-primary mb-2 btn-block">Добавить окно</button>
       <div v-if="numOfWindows >= 1" id="w1">
-        <input type="number" v-model.number="w1_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w1_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w1_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w1_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
       <div v-if="numOfWindows >= 2" id="w2">
-        <input type="number" v-model.number="w2_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w2_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w2_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w2_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
       <div v-if="numOfWindows >= 3" id="w3">
-        <input type="number" v-model.number="w3_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w3_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w3_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w3_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
       <div v-if="numOfWindows >= 4" id="w4">
-        <input type="number" v-model.number="w4_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w4_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w4_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w4_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
       <div v-if="numOfWindows >= 5" id="w5">
-        <input type="number" v-model.number="w5_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w5_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w5_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w5_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
       <div v-if="numOfWindows >= 6" id="w6">
-        <input type="number" v-model.number="w6_l" min="0" step="0.1" class="form-control"/>
-        <label>Ширина (м)</label>
-        <input type="number" v-model.number="w6_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="w6_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="w6_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeWindow">
+              <span aria-hidden="true">×</span>
+            </button></div>
+        </div>
       </div>
     </div>
     <div id="doors">
       <button @click="addDoor" class="btn btn-outline-primary mb-2 btn-block">Добавить дверь</button>
       <div v-if="numOfDoors >= 1">
-        <input type="number" v-model.number="d1_l" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <input type="number" v-model.number="d1_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="d1_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="d1_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
+            <span aria-hidden="true">×</span>
+          </button></div>
+        </div>
       </div>
       <div v-if="numOfDoors >= 2">
-        <input type="number" v-model.number="d2_l" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <input type="number" v-model.number="d2_w" min="0" step="0.1" class="form-control"/>
-        <label>Высота (м)</label>
-        <button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="row">
+          <div class="col">
+            <input type="number" v-model.number="d2_l" min="0" step="0.1" class="form-control"/>
+            <label>Ширина (м)</label></div>
+          <div class="col">
+            <input type="number" v-model.number="d2_w" min="0" step="0.1" class="form-control"/>
+            <label>Высота (м)</label></div>
+          <div class="col"><button type="button" class="btn btn-outline-primary mb-2" aria-label="Close" @click="closeDoor">
+            <span aria-hidden="true">×</span>
+          </button></div>
+        </div>
       </div>
     </div>
     <br />
@@ -164,7 +214,7 @@
       <br />
       <span>Раппорт: {{ rapport }} (м)</span>
     </div>
-    <button @click="calculate" class="btn btn-outline-primary mb-2 btn-block">Рассчитать площадь</button>
+    <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать площадь</button>
     <br />
     <span>Рабочая площадь помещения: {{ param_a }}м<sup>2</sup></span>
     <br />
