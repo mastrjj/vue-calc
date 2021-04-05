@@ -86,6 +86,7 @@
       <button @click="addWindow" class="btn btn-outline-primary mb-2 btn-block">Добавить окно</button>
       <div v-if="numOfWindows >= 1" id="w1">
         <div class="row">
+          <div class="col">Окно 1</div>
           <div class="col">
             <input type="number" v-model.number="w1_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small>
@@ -102,6 +103,7 @@
       </div>
       <div v-if="numOfWindows >= 2" id="w2">
         <div class="row">
+          <div class="col">Окно 2</div>
           <div class="col">
             <input type="number" v-model.number="w2_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small>
@@ -118,6 +120,7 @@
       </div>
       <div v-if="numOfWindows >= 3" id="w3">
         <div class="row">
+          <div class="col">Окно 3</div>
           <div class="col">
             <input type="number" v-model.number="w3_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small>
@@ -134,6 +137,7 @@
       </div>
       <div v-if="numOfWindows >= 4" id="w4">
         <div class="row">
+          <div class="col">Окно 4</div>
           <div class="col">
             <input type="number" v-model.number="w4_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small>
@@ -150,6 +154,7 @@
       </div>
       <div v-if="numOfWindows >= 5" id="w5">
         <div class="row">
+          <div class="col">Окно 5</div>
           <div class="col">
             <input type="number" v-model.number="w5_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small>
@@ -166,6 +171,7 @@
       </div>
       <div v-if="numOfWindows >= 6" id="w6">
         <div class="row">
+          <div class="col">Окно 6</div>
           <div class="col">
             <input type="number" v-model.number="w6_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small></div>
@@ -183,6 +189,7 @@
       <button @click="addDoor" class="btn btn-outline-primary mb-2 btn-block">Добавить дверь</button>
       <div v-if="numOfDoors >= 1">
         <div class="row">
+          <div class="col">Дверь 1</div>
           <div class="col">
             <input type="number" v-model.number="d1_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small></div>
@@ -196,6 +203,7 @@
       </div>
       <div v-if="numOfDoors >= 2">
         <div class="row">
+          <div class="col">Дверь 2</div>
           <div class="col">
             <input type="number" v-model.number="d2_h" min="0" step="0.1" class="form-control"/>
             <small class="form-text text-muted">Ширина (м)</small></div>
