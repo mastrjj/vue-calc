@@ -194,29 +194,35 @@
     <br />
     <div>
       <h3>Ширина рулона:</h3>
-      <input type="radio" id="w_53" value=0.53 v-model="roll_widht" checked />
-      <label for="w_53">53 (см)</label>
-      <input type="radio" id="w_106" value=1.06 v-model="roll_widht" />
-      <label for="w_106">106 (см)</label>
-      <br />
+      <div class="row">
+        <div class="col">
+          <input type="radio" id="w_53" value=0.53 v-model="roll_widht" checked />
+          <label for="w_53">53 (см)</label></div>
+        <div class="col">
+          <input type="radio" id="w_106" value=1.06 v-model="roll_widht" />
+          <label for="w_106">106 (см)</label></div>
+      </div>
       <h3>Ширина рулона:</h3>
-      <input type="radio" id="wl_10" value=10 v-model="roll_length" checked />
-      <label for="wl_10">10 (м)</label>
-      <input type="radio" id="wl_25" value=25 v-model="roll_length" />
-      <label for="wl_25">25 (м)</label>
-      <br />
+      <div class="row">
+        <div class="col">
+          <input type="radio" id="wl_10" value=10 v-model="roll_length" checked />
+          <label for="wl_10">10 (м)</label></div>
+        <div class="col">
+          <input type="radio" id="wl_25" value=25 v-model="roll_length" />
+          <label for="wl_25">25 (м)</label></div>
+      </div>
       <h3>Высота раппорта:</h3>
       <input type="number" id="wl_10" v-model.number="rapport" min="0" step="0.1" class="form-control"/>
       <br />
-      <span>Ширина рулона: {{ roll_widht }}(м)</span>
+      <span>Ширина рулона: {{ roll_widht }} (м)</span>
       <br />
-      <span>Длина рулона: {{ roll_length }}(м)</span>
+      <span>Длина рулона: {{ roll_length }} (м)</span>
       <br />
       <span>Раппорт: {{ rapport }} (м)</span>
     </div>
-    <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать площадь</button>
+    <button @click="calculate" class="btn btn-success mb-2 btn-block">Рассчитать</button>
     <br />
-    <span>Рабочая площадь помещения: {{ param_a }}м<sup>2</sup></span>
+    <span>Рабочая площадь помещения: {{ param_a }} м<sup>2</sup></span>
     <br />
     <span>Требуемое Количество рулонов: {{ param_X }} шт.</span>
     <br />
